@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css">
+    <style type="text/css">
+        .container {
+            margin-top: 40px;
+        }
+
+        .btn-primary {
+            width: 100%;
+        }
+
+        input:focus {
+            border-radius: 10px;
+        }
+
+        ​
+    </style>
+    ​
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/2.14.1/moment.min.js"></script>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script>
+        $(function () {
+            $("#datepicker").datepicker({
+                changeMonth: true,
+                changeYear: true,
+                format: 'mm/dd/yyyy',
+                startDate: '1d'
+
+            });
+        });
+        $(function () {
+            $("#datepicker1").datepicker({
+                changeMonth: true,
+                changeYear: true,
+                format: 'mm/dd/yyyy',
+                startDate: '3d'
+            });
+        });
+
+        function hai() {
+            var fromDate = $("#datepicker").val()
+            var toDate = $("#datepicker1").val()
+            console.log(`from : ${fromDate} \n to :  ${toDate}`)
+            window.parent.postMessage(JSON.stringify({
+                event_code: 'ym-client-event', data: JSON.stringify({
+                    event: {
+                        code: "DateRange",
+                        data: {
+                            from: fromDate,
+                            to: toDate
+                        }
+                    }
+                })
+            }), '*');
+            return false;
+        }
+
+    </script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container" style="border-color: black;">
+        <Div class="col-sm-8">
+            <form onsubmit="return hai()">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <p color: black;>From : <input id="datepicker" placeholder="dd/mm/yyyy"
+                                style="border-radius: 10px;border-color: skyblue;" required></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <p style="color: black;">To &nbsp; &nbsp;&nbsp;: <input id="datepicker1"
+                                placeholder="dd/mm/yyyy" style="border-radius: 10px;border-color: skyblue;" required>
+                        </p>
+                    </div>
+                </div>
+                <input type="submit" value="Submit" id="formsubmit"
+                    style="border-radius: 10px;background-color: white; border-color: skyblue;background-color: skyblue;">
+            </form>
+        </Div>
+    </div>
+</body>
+
+</html>
