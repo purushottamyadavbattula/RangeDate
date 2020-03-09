@@ -17,7 +17,7 @@
 
         const queryString = window.location.search;
         console.log(queryString)
-        let urlParams = (queryString.split('?')[1]).split("|");
+        let urlParams = ((queryString.split('&')[0]).split('?')[1]).split("|");
         console.log(urlParams)
         const addr1 = urlParams[0],
             addr2 = urlParams[1];
