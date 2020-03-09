@@ -16,9 +16,12 @@
     <script>
 
         const queryString = window.location.search;
+        console.log(queryString)
         let urlParams = (queryString.split('?')[1]).split("|");
+        console.log(urlParams)
         const addr1 = urlParams[0],
             addr2 = urlParams[1];
+        console.log(addr1 + "\n" + addr2)
         document.getElementById("myFrame").src = "https://www.google.com/maps/embed/v1/directions?origin=" + addr1 + "&destination=" + addr2 + "&key=AIzaSyBATVydDIgZC-W5JL7lYtxddF0R-XNSQhw"
     // document.getElementById("myFrame").src = "http://maps.google.com/maps?saddr=14.4222318,78.2263388&daddr=14.5241979,78.2463277";
         // console.log(window.location.href.pathname)
