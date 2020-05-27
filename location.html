@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+</head>
+
+<body>
+    <iframe id="myFrame"  width="200" height="300"></iframe>
+    <!-- frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=15.703491%2C101.0116493&key=AIzaSyBATVydDIgZC-W5JL7lYtxddF0R-XNSQhw" allowfullscreen></iframe> -->
+
+
+    <script>
+
+        const queryString = window.location.search;
+        console.log(queryString)
+        let urlParams = ((queryString.split('&')[0]).split('?')[1]).split("|");
+        console.log(urlParams)
+        const addr1 = urlParams[0],
+            addr2 = urlParams[1];
+        console.log(addr1 + "\n" + addr2)
+        document.getElementById("myFrame").src = `https://www.google.com/maps/embed/v1/place?q=${addr1}&key=AIzaSyBATVydDIgZC-W5JL7lYtxddF0R-XNSQhw`
+    // document.getElementById("myFrame").src = "http://maps.google.com/maps?saddr=14.4222318,78.2263388&daddr=14.5241979,78.2463277";
+        // console.log(window.location.href.pathname)
+        // //window.open('https://csedata-cdb17.firebaseapp.com');
+        //console.log(addr1 + "\n" + addr2)
+        //?loc1=14.4222318,78.2263388&loc2=14.5241979,78.2463277
+        //https://www.google.com/maps/embed/v1/directions?origin=place_id:ChIJh2_y1BByszsRoAKKoVmIFa8&destination=17.385044%2C78.486671&key=AIzaSyCWpYgU5FB_2VXuwQwpKXA08fnvYckFZFU
+        //console.log(queryString.split('?')[1])
+        //?10.8010811,76.0440957|33.8785109,74.2845826
+    </script>
+
+</body>
+
+</html>
