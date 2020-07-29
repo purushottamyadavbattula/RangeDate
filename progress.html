@@ -19,14 +19,15 @@
 </body>
 <script>
     let progressBar=document.getElementById("progressbar")
+    let width=10
     try{
-    let width=(((window.location.href.split("?"))[1]).split("&")[0])
+    width=(((window.location.href.split("?"))[1]).split("&")[0])
     console.log(width)
+    console.log("intry")
     }
     catch(e)
     {
-        let width=10
-        console.log(width)
+        
     }
    
     console.log(width)
